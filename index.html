@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Masatoshi Nishiguchi">
+
+  <title>React experiments</title>
+
+  <!-- Load Bootstrap styles -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+  <!-- Load ReactJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.min.js"></script>
+
+  <style>
+  main {
+    margin-top: 40px;
+  }
+  .hello {
+    color: red;
+  }
+  .lorem {
+    color: blue;
+  }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>React experiments</h1>
+
+    <hr>
+
+    <section class="experiments">
+      <div id="helloElement"></div>
+      <div id="loremElementVisibleText"></div>
+      <div id="loremElementHiddenText"></div>
+    </section>
+  </main>
+
+  <script>
+    // Experiment A: Creating a single element using React.
+
+    // 1. Create an element.
+    var helloElement = React.createElement( "h2", { className: "hello" }, "Hello world" );
+
+    // 2. Render that element.
+    ReactDOM.render(
+      helloElement,
+      document.getElementById( 'helloElement' )
+    );
+
+    //----------------------------//
+
+    // Experiment B: Creating a component using React.
+
+    // 1. Create a component that holds multiple elements in it.
+    var loremComponent = React.createClass({
+      loremText: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero esse quos fuga sapiente commodi placeat vel animi in incidunt, veritatis illum eveniet deleniti impedit, architecto eum consectetur accusamus beatae repudiandae.",
+      render: function() {
+        var text = ( this.props.isVisibleText ) ? this.loremText : "hidden";
+        return (
+          React.createElement( "div", { className: "lorem" },
+            React.createElement( "p", null, text ),
+            React.createElement( "p", null, text ),
+            React.createElement( "p", null, text )
+          )
+        );
+      }
+    });
+
+    // 2. Instantiate the component as an element.
+    var loremElementVisibleText = React.createElement( loremComponent, { isVisibleText: true } );
+    var loremElementHiddenText  = React.createElement( loremComponent, { isVisibleText: false } );
+
+    // 3. Render that element.
+    ReactDOM.render(
+      loremElementVisibleText,
+      document.getElementById( 'loremElementVisibleText' )
+    );
+    ReactDOM.render(
+      loremElementHiddenText,
+      document.getElementById( 'loremElementHiddenText' )
+    );
+  </script>
+
+</body>
+</html>
