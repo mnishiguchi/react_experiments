@@ -35,8 +35,8 @@ const common = {
     loaders: [
       {
         // Test expects a /<RegExp>/ surrounded by slashes.
-        test:    /\.css$/,
-        loaders: [ 'style', 'css' ],
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"],
         // Include accepts either a path or an array of paths.
         // NOTE: If include isn't set, Webpack will traverse all files within the base directory. This can hurt performance.
         include: PATHS.app

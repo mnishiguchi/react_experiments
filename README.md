@@ -8,6 +8,7 @@ Practice React.js and Webpack following the tutorial http://survivejs.com/webpac
 
 ### Basics
 - http://survivejs.com/webpack_react/developing_with_webpack/
+- https://www.bensmithett.com/smarter-css-builds-with-webpack/
 
 ### [Splitting Up the Configuration](http://survivejs.com/webpack_react/developing_with_webpack/#splitting-up-the-configuration)
 - Multiple ways:
